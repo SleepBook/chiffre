@@ -53,12 +53,12 @@ class MyModule extends Module with ChiffreInjectee {
 In __Rocket-Chip Assisted Injection__, the fault controller is a provided Rocket Custom Coprocessor (RoCC) called [`LeChiffre`](le-chiffre/src/main/scala/chiffre/LeChiffre.scala).
 This can then be used to orchestrate fault injection experiments in external components or inside Rocket itself.
 We provide an example [patch](le-chiffre/patches/rocket-chip-fault-cycle.patch) that makes certain control and status registers (CSRs) in rocket fault injectable and a bare metal test program that makes sure this fault injection is working.
-You can build an emulator with the correct configuration using the following (note: this will clone the `chiffre` repository inside of your Rocket Chip clone directory):
+You can build an emulator with the correct configuration using the following
 
 ``` bash
 git clone https://github.com/freechipsproject/rocket-chip $ROCKETCHIP_DIR
 cd $ROCKETCHIP_DIR
-git clone https://github.com/ibm/chiffre chiffre
+git submodule add https://github.com/ibm/chiffre chiffre
 cd chiffre
 git pull origin master
 git submodule update --init --recursive
